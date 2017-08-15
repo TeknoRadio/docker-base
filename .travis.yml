@@ -8,10 +8,7 @@ services:
 before_install:
   - docker pull ubuntu:16.04
 
-install:
-  - docker build -t teknoradio/base .
-  - docker run --name base teknoradio/base
 
 script:
-  - docker ps | grep -q base
-
+  - docker build -t teknoradio/base .
+  - docker run --rm --name base teknoradio/base /bin/bash -c "which curl" | grep -q /usr/bin/curl
