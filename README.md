@@ -4,3 +4,8 @@
 # docker-base
 
 A very minimal base docker image for teknoradio containers
+
+
+## TODO
+
+- https://testinfra.readthedocs.io/en/latest/examples.html#test-docker-images

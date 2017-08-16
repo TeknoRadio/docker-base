@@ -8,5 +8,6 @@ docker run -i                        \
     --dns "8.8.8.8"                  \
     --volume "$DIR/data":/data       \
     --volume "$DIR/logging":/logging \
+    --entrypoint /bin/bash           \
 teknoradio/base /bin/bash
 
