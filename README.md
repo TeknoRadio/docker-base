@@ -4,3 +4,9 @@
 # docker-base
 
 A very minimal base docker image for teknoradio containers
+
+## Pull
+
+```
+docker pull quay.io/teknoradio.org/base
+```
