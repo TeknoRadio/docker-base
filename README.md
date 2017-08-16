@@ -5,7 +5,8 @@
 
 A very minimal base docker image for teknoradio containers
 
+## Pull
 
-## TODO
-
-- https://testinfra.readthedocs.io/en/latest/examples.html#test-docker-images
+```
+docker pull quay.io/teknoradio.org/base
+```
