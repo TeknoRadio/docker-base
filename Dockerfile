@@ -17,7 +17,7 @@ RUN apt-get update &&          \
     vim                        \
     wget &&                    \
     apt-get clean &&           \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD config/entrypoint.sh /entrypoint.sh
 RUN chmod 750 /entrypoint.sh
