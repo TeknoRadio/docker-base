@@ -81,3 +81,13 @@ def test_that_data_directory_is_present_and_writable(host):
     assert mountpoint.exists
     assert mountpoint.filesystem == 'ext4'
     assert 'OK' in host.check_output('touch /data/somefile.txt && echo OK')
+
+
+def test_that_python_is_installed(host):
+    assert host.exists('python3')
+    assert host.exists('pip3')
+
+
+@pytest.mark.destructive
+def test_that_python_pip_can_install_packages(host):
+    assert 'OK' in host.check_output('pip3 -q install requests && echo OK')
