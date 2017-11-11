@@ -15,7 +15,7 @@ install:
 script:
   - docker build -t teknoradio/base .
   - docker run --rm --name base teknoradio/base /bin/bash -c "which curl" | grep -q /usr/bin/curl
-  - testinfra --connection=docker -v
+  - py.test --connection=docker -v
 
 notifications:
   email : false

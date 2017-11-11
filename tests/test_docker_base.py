@@ -58,29 +58,23 @@ def test_that_vim_utilities_link_to_vim_basic(host, util):
     assert vim.linked_to == '/usr/bin/vim.basic'
 
 
+def test_that_user_is_added_and_homedir_exists(host):
+    user = host.user('user')
+    assert user.home == '/home/user'
+
+    homedir = host.file('/home/user')
+    assert homedir.is_directory
+    assert homedir.user == user.name
+
+
 def test_that_entrypoint_is_present_and_executable(host):
-    script = host.file('/entrypoint.sh')
+    script = host.file('/home/user/entrypoint.sh')
     assert script.is_file
+    assert script.user == 'user'
+    assert script.group == 'nogroup'
 
-    output = host.check_output('/entrypoint.sh')
+    output = host.check_output('/home/user/entrypoint.sh')
     assert 'Tekno Radio Docker Base Image' in output
-
-
-@pytest.mark.destructive
-def test_that_logging_directory_is_present_and_writable(host):
-    mountpoint = host.mount_point('/logging')
-    assert mountpoint.exists
-    assert mountpoint.filesystem == 'ext4'
-    assert 'OK' in host.check_output('touch /logging/somefile.log && echo OK')
-
-
-@pytest.mark.destructive
-def test_that_data_directory_is_present_and_writable(host):
-    mountpoint = host.mount_point('/data')
-
-    assert mountpoint.exists
-    assert mountpoint.filesystem == 'ext4'
-    assert 'OK' in host.check_output('touch /data/somefile.txt && echo OK')
 
 
 def test_that_python_is_installed(host):

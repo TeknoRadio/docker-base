@@ -19,7 +19,9 @@ RUN apt-get update &&          \
     apt-get clean &&           \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ADD config/entrypoint.sh /entrypoint.sh
-RUN chmod 750 /entrypoint.sh
+RUN useradd --shell /bin/bash user
+ADD config/entrypoint.sh /home/user/entrypoint.sh
+RUN chown user:nogroup -R /home/user && chmod 750 /home/user/entrypoint.sh
 
-VOLUME ["/logging", "/data"]
+USER user:nogroup
+WORKDIR /home/user
