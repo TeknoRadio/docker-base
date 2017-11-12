@@ -5,7 +5,7 @@ ADD config/apt-settings /etc/apt/apt.conf.d/10settings
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update &&          \
-    apt-get upgrade &&         \
+    apt-get -y upgrade &&      \
     apt-get -y install         \
     apt-transport-https        \
     build-essential            \

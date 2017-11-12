@@ -41,7 +41,8 @@ APT_SETTINGS = [
         "APT::Install-Recommends false;",
         "APT::Install-Suggests false;",
         "Acquire::ForceIPv4 true;",
-        "Acquire::PDiffs false;"
+        "Acquire::PDiffs false;",
+        "Acquire::Languages none;"
 ]
 
 
