@@ -13,6 +13,7 @@ def test_that_container_is_ubuntu_xenial(host):
 
 INSTALLED_PACKAGES = [
     "apt-transport-https",
+    "build-essential",
     "ca-certificates",
     "curl",
     "git",
@@ -65,6 +66,11 @@ def test_that_user_is_added_and_homedir_exists(host):
     homedir = host.file('/home/user')
     assert homedir.is_directory
     assert homedir.user == user.name
+
+
+def test_that_user_has_sudo_rights(host):
+    sudoers = host.file('/etc/sudoers')
+    assert sudoers.contains('user ALL=(ALL) NOPASSWD:ALL')
 
 
 def test_that_entrypoint_is_present_and_executable(host):
