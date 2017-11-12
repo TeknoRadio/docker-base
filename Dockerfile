@@ -8,6 +8,7 @@ RUN apt-get update &&          \
     apt-get upgrade &&         \
     apt-get -y install         \
     apt-transport-https        \
+    build-essential            \
     ca-certificates            \
     curl                       \
     git                        \
