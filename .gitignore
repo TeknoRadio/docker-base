@@ -102,3 +102,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
+start.sh
+build.sh

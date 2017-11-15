@@ -15,7 +15,9 @@ RUN apt-get update &&          \
     python3                    \
     python3-dev                \
     python3-pip                \
+    python3-requests           \
     software-properties-common \
+    sudo                       \
     vim                        \
     wget &&                    \
     apt-get clean &&           \
