@@ -11,7 +11,7 @@ def host(request):
     docker_id = check_output("docker run -d %s tail -f /dev/null", request.param)
 
     # yield a dynamic created host
-    yield testinfra.get_host("docker://" + docker_id)
+    yield testinfra.get_host("docker://" + docker_id, sudo=True)
 
     # destroy the container
     check_output("docker rm -f %s", docker_id)
